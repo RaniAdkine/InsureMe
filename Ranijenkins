@@ -27,5 +27,17 @@ pipeline {
         sh 'docker build -t RaniAdkine/insureme:latest .'
                     }
             }
+    stage('Login to Dockerhub') {
+      steps {
+        withCredentials([usernamePassword(credentialsId: 'dockeruser', passwordVariable: 'dockerpwdall', usernameVariable: 'dockeruserall')]) {
+        sh 'docker login -u ${dockeruserall} -p ${dockerpwdall}'
+                                                                    }
+                                }
+            }
+    stage('Push the Docker image') {
+      steps {
+        sh 'docker push RaniAdkine/insureme'
+                                }
+            }
       }
 }
