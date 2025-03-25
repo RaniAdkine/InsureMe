@@ -7,20 +7,20 @@ pipeline {
     stage('Git checkout') {
       steps {
          echo 'This is for cloning the gitrepo'
-         git branch: 'main', url: 'https://github.com/RaniAdkine/InsureMe.git'
+         git branch: 'main', url: 'https://github.com/cbabu85/InsureMe-20Mar.git'
                           }
             }
-    stage('Mvn Package') {
+    stage('Create a Package') {
       steps {
-         echo 'This is Maven'
+         echo 'This will create a package using maven'
          sh 'mvn package'
-                          }
+                             }
             }
-    stage('Test REsults') {
+
+    stage('Publish the HTML Reports') {
       steps {
-         echo 'This is generating result for Test'
-         publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, icon: '', keepAll: false, reportDir: '/var/lib/jenkins/workspace/InsureMe/target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
-                          }
+          publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '/var/lib/jenkins/workspace/Insure-Project/target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+                        }
             }
       }
 }
