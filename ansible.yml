@@ -17,4 +17,5 @@
     become_user: root
 
   - name: Deploy the Image and Run as Container
-    command: docker run -itd -p 9094:8081 
+    command: docker run -itd -p 9094:8081 admin9978/insureme:latest
+
