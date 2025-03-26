@@ -24,20 +24,9 @@ pipeline {
             }
      stage('Create a Docker image from the Package Insure-Me.jar file') {
       steps {
-        sh 'docker build -t RaniAdkine/insureme:latest .'
+        sh 'docker build -t admin9978/insureme:latest .'
                     }
             }
-    stage('Login to Dockerhub') {
-      steps {
-        withCredentials([usernamePassword(credentialsId: 'userdocker', passwordVariable: 'dockerpassall', usernameVariable: 'dockeruserall')]) {
-        sh 'docker login -u ${dockeruserall} -p ${dockerpassall}'
-                                                                    }
-                                }
-            }
-    stage('Push the Docker image') {
-      steps {
-        sh 'docker push admin9978/insureme:latest'
-                                }
-            }
+ 
       }
 }
