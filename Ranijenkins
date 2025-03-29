@@ -12,7 +12,7 @@ pipeline {
             }
     stage('Create a Package') {
       steps {
-         echo 'This will create a package using maven'
+         echo 'Compiling, testing, n packaging the application'
          sh 'mvn package'
                              }
             }
